@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Data Import</title>
+</head>
+<body onload="loadDoc()">
+    <h2>API Product List</h2>
+    <ul>
+        <li id="Productid">/li>
+        <li id="Name"></li>
+        <li id="Address"></li>
+        <li id="Product"></li>
+        <li id="Price"></li>
+        <li id="Ratting"></li>
+    </ul>
+
+    <script>
+        function loadDoc()
+        {
+            const xhttp= new XMLHttpRequest();
+            xhttp.onreadystatechange= function()
+            {
+                if(this.readyState==4 && this.status ==200)
+            {
+                var obj_arr= JSON.parse(this.responseText);
+                document.getElementById("Productid").innerHTML= obj_arr[0].id;
+                document.getElementById("Name").innerHTML= obj_arr[0].Name;
+                document.getElementById("Address").innerHTML= obj_arr[0].Address;
+                document.getElementById("Product").innerHTML= obj_arr[0].Product;
+                document.getElementById("Price").innerHTML= obj_arr[0].Price;
+                document.getElementById("Ratting").innerHTML= obj_arr[0].Ratting;
+            }
+            };
+            xhttp.open("GET","http://127.0.0.1:8000/api/products/list");
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>

@@ -6,7 +6,7 @@ const StudentList = () => {
     return (
         <div>
             <Header />
-            <h1 align="center">Customer List</h1>
+            <h1 align="center">Course List</h1>
             <div className="col-sm-6 offset-sm-3">
                 <Table>
                     <tr>
